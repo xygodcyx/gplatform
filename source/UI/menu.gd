@@ -26,6 +26,6 @@ func _on_archive_button_pressed() -> void:
 	SignalManager.go_achievement.emit()
 
 func _on_clear_data_button_pressed() -> void:
-	# DataManager.reset_player_data()
+	DataManager.reset_player_data()
 	DataManager.reset_achievement_all_data()
 	DataManager.load_all_user_data()

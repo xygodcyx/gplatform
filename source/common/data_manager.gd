@@ -178,6 +178,7 @@ func append_new_playback_data():
 var level_time: float = 0.0
 var delta_time: float = 0.0
 
+
 func _process(delta: float) -> void:
 	if is_in_game && !get_tree().paused:
 		game_frame += 1
