@@ -110,6 +110,6 @@ func find_cur_index(data: Array):
 
 该项目已在github上开源，大家感兴趣的话可以自行查看游戏源代码：[gplatform](https://github.com/xygodcyx/gplatform)
 
-![preview](/assets/有意思的游戏功能-1/preview.gif)
+![preview](/docs/assets/preview.gif)
 
 可以看到只记录操作就可以实现基本的回放，基于此还可以实时展示进行的操作，显得非常“高级”
