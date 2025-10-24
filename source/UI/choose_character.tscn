@@ -1,0 +1,189 @@
+[gd_scene load_steps=9 format=3 uid="uid://d1vsc7x7aapnu"]
+
+[ext_resource type="PackedScene" uid="uid://dx0aaxtxvoij6" path="res://source/entity/parallax_bg.tscn" id="1_hbhlu"]
+[ext_resource type="Script" uid="uid://d3fcgxlbr0tl5" path="res://source/UI/choose_character.gd" id="1_hl7q1"]
+[ext_resource type="Texture2D" uid="uid://ded3n3ahn0fnm" path="res://assets/textures/bg/texture_bg_blue.png" id="2_hbhlu"]
+[ext_resource type="Texture2D" uid="uid://c13hvwrph7f77" path="res://assets/textures/ui/texture_button_icon_back.png" id="3_hl7q1"]
+[ext_resource type="Texture2D" uid="uid://dp15hshcbpat" path="res://assets/textures/main_characters/Pink Man/Jump (32x32).png" id="4_wcc62"]
+[ext_resource type="PackedScene" uid="uid://cg6b5pm0b3f0t" path="res://source/UI/player_buff_panel.tscn" id="6_te1hk"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_hl7q1"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_te1hk"]
+events = [SubResource("InputEventKey_hl7q1")]
+
+[node name="ChooseCharacter" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hl7q1")
+
+[node name="ParallaxBg" parent="." instance=ExtResource("1_hbhlu")]
+backward = true
+bg_texture = ExtResource("2_hbhlu")
+
+[node name="ButtonGroup" type="Control" parent="."]
+anchors_preset = 0
+
+[node name="BackMenu" type="Button" parent="ButtonGroup"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 7.0
+offset_right = 120.0
+offset_bottom = 31.0
+focus_neighbor_left = NodePath("../../ChooseCharacterPanel/Confirm")
+focus_neighbor_top = NodePath("../../ChooseCharacterPanel/Confirm")
+focus_neighbor_right = NodePath("../../ChooseCharacterPanel/Prev")
+focus_neighbor_bottom = NodePath("../../ChooseCharacterPanel/Prev")
+focus_next = NodePath("../../ChooseCharacterPanel/Prev")
+focus_previous = NodePath("../../ChooseCharacterPanel/Confirm")
+shortcut = SubResource("Shortcut_te1hk")
+text = "Back to Menu"
+icon = ExtResource("3_hl7q1")
+
+[node name="ChooseCharacterPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -253.0
+offset_top = -130.0
+offset_right = 277.0
+offset_bottom = 114.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="ChooseCharacterPanel"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -190.0
+offset_top = 8.0
+offset_right = -14.0
+offset_bottom = 31.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 22
+text = "Choose Character"
+horizontal_alignment = 1
+
+[node name="CharacterPlaceholder" type="Control" parent="ChooseCharacterPanel"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CharacterPortrait" type="TextureRect" parent="ChooseCharacterPanel/CharacterPlaceholder"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -11.0
+offset_top = 22.0
+offset_right = 110.0
+offset_bottom = 143.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_wcc62")
+
+[node name="CharacterName" type="Label" parent="ChooseCharacterPanel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -130.0
+offset_top = -205.0
+offset_right = -66.0
+offset_bottom = -189.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Pink Man"
+
+[node name="PlayerBuffPanelControl" type="Control" parent="ChooseCharacterPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -129.0
+offset_top = -47.0
+offset_right = -129.0
+offset_bottom = -47.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerBuffPanel" parent="ChooseCharacterPanel/PlayerBuffPanelControl" instance=ExtResource("6_te1hk")]
+layout_mode = 0
+
+[node name="Confirm" type="Button" parent="ChooseCharacterPanel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 182.0
+offset_top = -36.0
+offset_right = 246.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_neighbor_left = NodePath("../Prev")
+focus_neighbor_top = NodePath("../Prev")
+focus_neighbor_right = NodePath("../Next")
+focus_neighbor_bottom = NodePath("../../ButtonGroup/BackMenu")
+focus_next = NodePath("../../ButtonGroup/BackMenu")
+focus_previous = NodePath("../Prev")
+text = "Confirm"
+
+[node name="Prev" type="Button" parent="ChooseCharacterPanel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 27.0
+offset_top = -37.0
+offset_right = 67.0
+offset_bottom = -13.0
+grow_vertical = 0
+focus_neighbor_left = NodePath("../../ButtonGroup/BackMenu")
+focus_neighbor_top = NodePath("../../ButtonGroup/BackMenu")
+focus_neighbor_right = NodePath("../Next")
+focus_neighbor_bottom = NodePath("../Confirm")
+focus_next = NodePath("../Next")
+focus_previous = NodePath("../../ButtonGroup/BackMenu")
+text = "Prev"
+
+[node name="Next" type="Button" parent="ChooseCharacterPanel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 93.0
+offset_top = -37.0
+offset_right = 133.0
+offset_bottom = -13.0
+grow_vertical = 0
+focus_neighbor_left = NodePath("../Prev")
+focus_neighbor_top = NodePath("../../ButtonGroup/BackMenu")
+focus_neighbor_right = NodePath("../Confirm")
+focus_neighbor_bottom = NodePath("../Confirm")
+focus_next = NodePath("../Confirm")
+focus_previous = NodePath("../Prev")
+text = "Next"
+
+[connection signal="pressed" from="ButtonGroup/BackMenu" to="." method="_on_back_menu_pressed"]
+[connection signal="pressed" from="ChooseCharacterPanel/Confirm" to="." method="_on_confirm_pressed"]
+[connection signal="pressed" from="ChooseCharacterPanel/Prev" to="." method="_on_prev_pressed"]
+[connection signal="pressed" from="ChooseCharacterPanel/Next" to="." method="_on_next_pressed"]

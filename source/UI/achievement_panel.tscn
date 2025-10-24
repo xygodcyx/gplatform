@@ -1,0 +1,79 @@
+[gd_scene load_steps=6 format=3 uid="uid://dpt4rayvl5pmo"]
+
+[ext_resource type="Texture2D" uid="uid://c66nn0uu8khvm" path="res://assets/textures/ui/texture_button_icon_close.png" id="1_g52kf"]
+[ext_resource type="Script" uid="uid://q3x07w5xgyfx" path="res://source/UI/achievement_panel.gd" id="1_pvhnk"]
+[ext_resource type="PackedScene" uid="uid://csq3g3myadw52" path="res://source/UI/achievement_item.tscn" id="2_urhmw"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_urhmw"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_7q6rr"]
+events = [SubResource("InputEventKey_urhmw")]
+
+[node name="AchievementPanel" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pvhnk")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Achievement"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="AchievementItemContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 16
+
+[node name="AchievementItem" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/AchievementItemContainer" instance=ExtResource("2_urhmw")]
+layout_mode = 2
+
+[node name="CloseButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -71.0
+offset_top = 5.0
+offset_right = -4.0
+offset_bottom = 29.0
+grow_horizontal = 0
+shortcut = SubResource("Shortcut_7q6rr")
+text = "Close"
+icon = ExtResource("1_g52kf")
+
+[connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]

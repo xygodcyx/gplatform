@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://csq3g3myadw52"]
+
+[ext_resource type="Script" uid="uid://cwxy81sf0fjqm" path="res://source/UI/achievement_item.gd" id="1_0ndow"]
+[ext_resource type="Texture2D" uid="uid://ded3n3ahn0fnm" path="res://assets/textures/bg/texture_bg_blue.png" id="1_vpioj"]
+
+[node name="AchievementItem" type="MarginContainer"]
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+script = ExtResource("1_0ndow")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+visible = false
+layout_mode = 2
+texture = ExtResource("1_vpioj")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Name"
+
+[node name="DescLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Desc"
+
+[node name="FinishLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "UnFinish"

@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://60f6o1rqsuo"]
+
+[ext_resource type="PackedScene" uid="uid://dfw7tpcupxmeq" path="res://source/entity/character/player.tscn" id="1_n2dlg"]
+[ext_resource type="Texture2D" uid="uid://c3ybnp0rwqtmn" path="res://assets/textures/main_characters/Pink Man/Double Jump (32x32).png" id="2_g1lwn"]
+[ext_resource type="Resource" uid="uid://m8noj4mlnvgx" path="res://source/resources/character/init_buff/pink_man.tres" id="2_ld365"]
+[ext_resource type="AnimationLibrary" uid="uid://cql72cxd24cti" path="res://assets/animations/animation_pink_man.tres" id="3_ld365"]
+
+[node name="Player" instance=ExtResource("1_n2dlg")]
+init_buff = ExtResource("2_ld365")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_g1lwn")
+hframes = 6
+
+[node name="AnimationPlayer" parent="." index="4"]
+libraries = {
+&"": ExtResource("3_ld365")
+}

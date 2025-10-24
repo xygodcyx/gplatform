@@ -1,0 +1,149 @@
+[gd_scene load_steps=21 format=3 uid="uid://b7elv2hfobwhf"]
+
+[ext_resource type="Texture2D" uid="uid://cn6bwo4t1eqq6" path="res://assets/textures/items/texture_items_checkpoint_end_idle.png" id="1_ivw5e"]
+[ext_resource type="Shader" uid="uid://sdqqpv1aof7a" path="res://source/shader/outline.gdshader" id="2_aw51g"]
+[ext_resource type="Texture2D" uid="uid://brfeb2qlc1qrh" path="res://assets/textures/items/texture_items_checkpoint_end_moving.png" id="2_fvt6e"]
+[ext_resource type="Script" uid="uid://bm0exndcoaffm" path="res://source/entity/end.gd" id="3_h6dge"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xb54h"]
+shader = ExtResource("2_aw51g")
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/outline_width = 2.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1kxc4"]
+atlas = ExtResource("2_fvt6e")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eboen"]
+atlas = ExtResource("2_fvt6e")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ncjt3"]
+atlas = ExtResource("2_fvt6e")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nsjs5"]
+atlas = ExtResource("2_fvt6e")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xy243"]
+atlas = ExtResource("2_fvt6e")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bhjde"]
+atlas = ExtResource("2_fvt6e")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sbs4y"]
+atlas = ExtResource("2_fvt6e")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ch1h"]
+atlas = ExtResource("2_fvt6e")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8301y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ivw5e")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1kxc4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eboen")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ncjt3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nsjs5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xy243")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bhjde")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sbs4y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ch1h")
+}],
+"loop": false,
+"name": &"moving",
+"speed": 8.0
+}]
+
+[sub_resource type="Curve" id="Curve_aw51g"]
+_data = [Vector2(0, 0.40011686), 0.0, 0.0, 0, 0, Vector2(0.26253688, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_xb54h"]
+curve_y = SubResource("Curve_aw51g")
+
+[sub_resource type="Curve" id="Curve_bff4w"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0.01179941, 0), 0.0, 0.0, 0, 0, Vector2(0.11209439, 1.9240656), 0.0, 0.0, 0, 0, Vector2(0.2772861, 0), 0.0, 0.0, 0, 0, Vector2(0.43657815, 1.483645), 0.0, 0.0, 0, 0, Vector2(0.5722714, 0.028037429), 0.0, 0.0, 0, 0, Vector2(0.7492626, 1.2102805), 0.0, 0.0, 0, 0, Vector2(0.88495576, 0), 0.0, 0.0, 0, 0, Vector2(0.96755165, 0.83060753), 0.0, 0.0, 0, 0, Vector2(1, 0.03563094), -10.296722, 0.0, 0, 0]
+point_count = 9
+
+[sub_resource type="CurveTexture" id="CurveTexture_aw51g"]
+curve = SubResource("Curve_bff4w")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bff4w"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+directional_velocity_min = -20.000015
+directional_velocity_max = -5.000016
+directional_velocity_curve = SubResource("CurveXYZTexture_xb54h")
+gravity = Vector3(0, 0, 0)
+radial_accel_min = 9.999997
+radial_accel_max = 9.999997
+scale_min = 0.19999999
+scale_curve = SubResource("CurveTexture_aw51g")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aw51g"]
+size = Vector2(46, 38)
+
+[node name="End" type="Node2D"]
+script = ExtResource("3_h6dge")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
+material = SubResource("ShaderMaterial_xb54h")
+scale = Vector2(0.7, 0.7)
+sprite_frames = SubResource("SpriteFrames_8301y")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="AnimatedSprite2D"]
+modulate = Color(1, 1, 0.6117647, 1)
+z_as_relative = false
+position = Vector2(0, 1.35525255e-20)
+emitting = false
+amount = 300
+lifetime = 3.0
+preprocess = 2.0
+process_material = SubResource("ParticleProcessMaterial_bff4w")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, 3)
+shape = SubResource("RectangleShape2D_aw51g")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

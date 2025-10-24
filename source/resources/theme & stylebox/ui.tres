@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://b555fah1dgh2b"]
+
+[ext_resource type="FontFile" uid="uid://cjkq4ynvw0ofc" path="res://assets/fonts/m6x11.ttf" id="1_271um"]
+
+[resource]
+Button/font_sizes/font_size = 16
+Button/fonts/font = ExtResource("1_271um")

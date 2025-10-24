@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CharacterBuff" load_steps=2 format=3 uid="uid://bvid2yakliunn"]
+
+[ext_resource type="Script" uid="uid://b533d25qfr2ek" path="res://source/resources/character/character_buff.gd" id="1_m5plc"]
+
+[resource]
+script = ExtResource("1_m5plc")
+add_max_hp = 1
+add_max_jump_count = 1
+add_max_shield_count = 1
+metadata/_custom_type_script = "uid://b533d25qfr2ek"

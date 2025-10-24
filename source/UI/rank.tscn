@@ -1,0 +1,88 @@
+[gd_scene load_steps=7 format=3 uid="uid://c1nyykagiw20m"]
+
+[ext_resource type="Script" uid="uid://sye5dmw4duv" path="res://source/UI/rank.gd" id="1_p6ggh"]
+[ext_resource type="PackedScene" uid="uid://bvyv4bb0m60vu" path="res://source/UI/table_head.tscn" id="2_kp7va"]
+[ext_resource type="PackedScene" uid="uid://5rj5fygepvfn" path="res://source/UI/table_row.tscn" id="3_axdje"]
+[ext_resource type="Texture2D" uid="uid://c66nn0uu8khvm" path="res://assets/textures/ui/texture_button_icon_close.png" id="4_d07yo"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_d07yo"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_dbfnf"]
+events = [SubResource("InputEventKey_d07yo")]
+
+[node name="Rank" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_p6ggh")
+
+[node name="RankBox" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_behavior_recursive = 1
+theme_override_constants/separation = 6
+
+[node name="LevelSwitchContainer" type="MarginContainer" parent="RankBox"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RankBox/LevelSwitchContainer"]
+layout_mode = 2
+
+[node name="LevelSwitch" type="TabBar" parent="RankBox/LevelSwitchContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/tab_separation = 10
+
+[node name="Close" type="Button" parent="RankBox/LevelSwitchContainer/HBoxContainer"]
+layout_mode = 2
+shortcut = SubResource("Shortcut_dbfnf")
+text = "CLOSE"
+icon = ExtResource("4_d07yo")
+
+[node name="Panel" type="Panel" parent="RankBox"]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+
+[node name="LevelDataPanel" type="MarginContainer" parent="RankBox"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="RankBox/LevelDataPanel"]
+layout_mode = 2
+
+[node name="LevelDataPanelWrap" type="VBoxContainer" parent="RankBox/LevelDataPanel/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 7
+
+[node name="Control" type="Control" parent="RankBox/LevelDataPanel/ScrollContainer/LevelDataPanelWrap"]
+layout_mode = 2
+
+[node name="TableHead" parent="RankBox/LevelDataPanel/ScrollContainer/LevelDataPanelWrap" instance=ExtResource("2_kp7va")]
+layout_mode = 2
+
+[node name="LevelDataPanelContainer" type="VBoxContainer" parent="RankBox/LevelDataPanel/ScrollContainer/LevelDataPanelWrap"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TableRow" parent="RankBox/LevelDataPanel/ScrollContainer/LevelDataPanelWrap/LevelDataPanelContainer" instance=ExtResource("3_axdje")]
+layout_mode = 2
+
+[connection signal="tab_changed" from="RankBox/LevelSwitchContainer/HBoxContainer/LevelSwitch" to="." method="_on_level_switch_tab_changed"]
+[connection signal="pressed" from="RankBox/LevelSwitchContainer/HBoxContainer/Close" to="." method="_on_close_pressed"]

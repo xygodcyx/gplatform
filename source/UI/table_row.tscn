@@ -1,0 +1,96 @@
+[gd_scene load_steps=4 format=3 uid="uid://5rj5fygepvfn"]
+
+[ext_resource type="Script" uid="uid://b1h00cjk78t7j" path="res://source/UI/table_row.gd" id="1_2gg7r"]
+[ext_resource type="Texture2D" uid="uid://dp15hshcbpat" path="res://assets/textures/main_characters/Pink Man/Jump (32x32).png" id="1_vjmtm"]
+[ext_resource type="Texture2D" uid="uid://c6mw78ay54qk5" path="res://assets/textures/ui/texture_button_icon_play.png" id="3_34y86"]
+
+[node name="TableRow" type="Control"]
+custom_minimum_size = Vector2(234, 32)
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+script = ExtResource("1_2gg7r")
+
+[node name="TagLabelControl" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TagLabel" type="Label" parent="TagLabelControl"]
+self_modulate = Color(0.9098039, 0.4, 0.4, 0.50980395)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -20.0
+offset_right = 32.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.24773784
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 32
+text = "BEST"
+
+[node name="TagLine" type="Panel" parent="TagLabelControl"]
+visible = false
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TableRowBox" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 32.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TableRowBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="CharacterPortrait" type="TextureRect" parent="TableRowBox/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_vjmtm")
+
+[node name="PassTimeTableLabel" type="Label" parent="TableRowBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "00:04"
+horizontal_alignment = 1
+
+[node name="DeadenCountTableLabel" type="Label" parent="TableRowBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "1"
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="TableRowBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="PlaybackButton" type="Button" parent="TableRowBox/HBoxContainer2"]
+layout_mode = 2
+text = "Playback"
+icon = ExtResource("3_34y86")
+
+[connection signal="pressed" from="TableRowBox/HBoxContainer2/PlaybackButton" to="." method="_on_playback_button_pressed"]

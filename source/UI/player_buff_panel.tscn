@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cg6b5pm0b3f0t"]
+
+[ext_resource type="Script" uid="uid://bsouwp1ubod1p" path="res://source/UI/player_buff_panel.gd" id="1_unpgm"]
+
+[node name="PlayerBuffPanel" type="VBoxContainer"]
+offset_right = 68.0
+offset_bottom = 80.0
+script = ExtResource("1_unpgm")

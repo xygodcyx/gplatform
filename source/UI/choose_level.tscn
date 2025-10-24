@@ -1,0 +1,112 @@
+[gd_scene load_steps=15 format=3 uid="uid://c5uhdo1gcemln"]
+
+[ext_resource type="PackedScene" uid="uid://dx0aaxtxvoij6" path="res://source/entity/parallax_bg.tscn" id="1_4dld5"]
+[ext_resource type="Script" uid="uid://g28qybeqyxlm" path="res://source/UI/choose_level.gd" id="1_vrgkb"]
+[ext_resource type="Texture2D" uid="uid://oghxp6w8p0hd" path="res://assets/textures/bg/texture_bg_green.png" id="3_05pfx"]
+[ext_resource type="Texture2D" uid="uid://c13hvwrph7f77" path="res://assets/textures/ui/texture_button_icon_back.png" id="3_gyklo"]
+[ext_resource type="PackedScene" uid="uid://b1hdjhpcg45wq" path="res://source/UI/select.tscn" id="5_05pfx"]
+[ext_resource type="PackedScene" uid="uid://qhl7f78xvt3o" path="res://source/UI/sub_view_port_display.tscn" id="5_0535i"]
+[ext_resource type="Texture2D" uid="uid://pivkhmyarpgb" path="res://assets/textures/ui/texture_button_icon_previous.png" id="6_skswo"]
+[ext_resource type="Texture2D" uid="uid://b6bxq8yvxs6xo" path="res://assets/textures/ui/texture_button_icon_next.png" id="8_uul5h"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_r31bo"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_0535i"]
+events = [SubResource("InputEventKey_r31bo")]
+
+[sub_resource type="InputEventAction" id="InputEventAction_uul5h"]
+action = &"ui_left"
+
+[sub_resource type="Shortcut" id="Shortcut_itye0"]
+events = [SubResource("InputEventAction_uul5h")]
+
+[sub_resource type="InputEventAction" id="InputEventAction_itye0"]
+action = &"ui_right"
+
+[sub_resource type="Shortcut" id="Shortcut_dc040"]
+events = [SubResource("InputEventAction_itye0")]
+
+[node name="Choose_Level" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vrgkb")
+
+[node name="ParallaxBg" parent="." instance=ExtResource("1_4dld5")]
+backward = true
+bg_texture = ExtResource("3_05pfx")
+
+[node name="ButtonGroup" type="VBoxContainer" parent="."]
+layout_mode = 1
+offset_left = 11.0
+offset_top = 10.0
+offset_right = 120.0
+offset_bottom = 62.0
+
+[node name="BackMenu" type="Button" parent="ButtonGroup"]
+layout_mode = 2
+text = "Back to Menu"
+icon = ExtResource("3_gyklo")
+alignment = 0
+
+[node name="BackCharacter" type="Button" parent="ButtonGroup"]
+layout_mode = 2
+shortcut = SubResource("Shortcut_0535i")
+text = "Back to Character Select"
+icon = ExtResource("3_gyklo")
+alignment = 0
+
+[node name="Select" parent="." instance=ExtResource("5_05pfx")]
+visible = false
+layout_mode = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(438, 194)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -220.5
+offset_top = -97.0
+offset_right = 217.5
+offset_bottom = 97.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Prev" type="TextureButton" parent="HBoxContainer"]
+custom_minimum_size = Vector2(42, 44)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+shortcut = SubResource("Shortcut_itye0")
+texture_normal = ExtResource("6_skswo")
+stretch_mode = 0
+
+[node name="LevelGridContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SubViewportDisplayControl" parent="HBoxContainer/LevelGridContainer" instance=ExtResource("5_0535i")]
+layout_mode = 2
+
+[node name="Next" type="TextureButton" parent="HBoxContainer"]
+custom_minimum_size = Vector2(42, 44)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+shortcut = SubResource("Shortcut_dc040")
+texture_normal = ExtResource("8_uul5h")
+stretch_mode = 0
+
+[connection signal="pressed" from="ButtonGroup/BackMenu" to="." method="_on_back_menu_pressed"]
+[connection signal="pressed" from="ButtonGroup/BackCharacter" to="." method="_on_back_character_pressed"]
+[connection signal="pressed" from="HBoxContainer/Prev" to="." method="_on_prev_pressed"]
+[connection signal="pressed" from="HBoxContainer/Next" to="." method="_on_next_pressed"]

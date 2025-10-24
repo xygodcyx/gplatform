@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1xoo0fv3t6at"]
+
+[ext_resource type="Script" uid="uid://dkdp3istdi87v" path="res://source/UI/dispatch_item.gd" id="1_xcxiw"]
+[ext_resource type="Texture2D" uid="uid://c5o6rbro0adbk" path="res://assets/textures/ui/icon/event.png" id="2_jjkb6"]
+
+[node name="DispathItem" type="Panel"]
+custom_minimum_size = Vector2(128, 44)
+offset_right = 128.0
+offset_bottom = 44.000053
+script = ExtResource("1_xcxiw")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="IconTexture" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_jjkb6")
+expand_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="DescLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "第一次死亡"
+
+[node name="TitleLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "已完成"

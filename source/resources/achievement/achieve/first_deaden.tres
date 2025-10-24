@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Achievement" load_steps=4 format=3 uid="uid://dpoo0pb3rlt7u"]
+
+[ext_resource type="Script" uid="uid://bn4k35h86m6qa" path="res://source/resources/achievement/achievement_condition.gd" id="1_27rjf"]
+[ext_resource type="Script" uid="uid://6hqv8nu5nlbi" path="res://source/resources/achievement/achievement.gd" id="1_e2sn3"]
+
+[sub_resource type="Resource" id="Resource_co0dg"]
+script = ExtResource("1_27rjf")
+check_prop = "achieve_deaden_count"
+metadata/_custom_type_script = "uid://bn4k35h86m6qa"
+
+[resource]
+script = ExtResource("1_e2sn3")
+name = "First_deaden"
+desc = "Oops! You’ve just experienced the sweet taste of defeat."
+condition = Array[ExtResource("1_27rjf")]([SubResource("Resource_co0dg")])
+metadata/_custom_type_script = "uid://6hqv8nu5nlbi"

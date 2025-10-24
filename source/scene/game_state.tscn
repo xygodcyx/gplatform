@@ -1,0 +1,105 @@
+[gd_scene load_steps=5 format=3 uid="uid://cpq74te06gufe"]
+
+[ext_resource type="Script" uid="uid://couw105c3bde4" path="res://addons/godot_state_charts/state_chart.gd" id="1_jn5ca"]
+[ext_resource type="Script" uid="uid://jk2jm1g6q853" path="res://addons/godot_state_charts/compound_state.gd" id="2_ugakd"]
+[ext_resource type="Script" uid="uid://cytafq8i1y8qm" path="res://addons/godot_state_charts/atomic_state.gd" id="3_v65rg"]
+[ext_resource type="Script" uid="uid://cf1nsco3w0mf6" path="res://addons/godot_state_charts/transition.gd" id="4_jk2fa"]
+
+[node name="GameState" type="Node"]
+script = ExtResource("1_jn5ca")
+metadata/_custom_type_script = "uid://couw105c3bde4"
+
+[node name="Root" type="Node" parent="."]
+script = ExtResource("2_ugakd")
+initial_state = NodePath("Menu")
+metadata/_custom_type_script = "uid://jk2jm1g6q853"
+
+[node name="Menu" type="Node" parent="Root"]
+script = ExtResource("3_v65rg")
+metadata/_custom_type_script = "uid://cytafq8i1y8qm"
+
+[node name="ToChooseCharacter" type="Node" parent="Root/Menu"]
+script = ExtResource("4_jk2fa")
+to = NodePath("../../ChooseCharacter")
+event = &"to_choose_character"
+delay_in_seconds = "0.0"
+metadata/_custom_type_script = "uid://cf1nsco3w0mf6"
+
+[node name="ToSetting" type="Node" parent="Root/Menu"]
+script = ExtResource("4_jk2fa")
+to = NodePath("../../Setting")
+event = &"to_setting"
+delay_in_seconds = "0.0"
+metadata/_custom_type_script = "uid://cf1nsco3w0mf6"
+
+[node name="Setting" type="Node" parent="Root"]
+script = ExtResource("3_v65rg")
+metadata/_custom_type_script = "uid://cytafq8i1y8qm"
+
+[node name="ToMenu" type="Node" parent="Root/Setting"]
+script = ExtResource("4_jk2fa")
+to = NodePath("../../Menu")
+event = &"to_menu"
+delay_in_seconds = "0.0"
+metadata/_custom_type_script = "uid://cf1nsco3w0mf6"
+
+[node name="ChooseCharacter" type="Node" parent="Root"]
+script = ExtResource("3_v65rg")
+metadata/_custom_type_script = "uid://cytafq8i1y8qm"
+
+[node name="ToChooseLevel" type="Node" parent="Root/ChooseCharacter"]
+script = ExtResource("4_jk2fa")
+to = NodePath("../../ChooseLevel")
+event = &"to_choose_level"
+delay_in_seconds = "0.0"
+metadata/_custom_type_script = "uid://cf1nsco3w0mf6"
+
+[node name="ToMenu" type="Node" parent="Root/ChooseCharacter"]
+script = ExtResource("4_jk2fa")
+to = NodePath("../../Menu")
+event = &"to_menu"
+delay_in_seconds = "0.0"
+metadata/_custom_type_script = "uid://cf1nsco3w0mf6"
+
+[node name="ChooseLevel" type="Node" parent="Root"]
+script = ExtResource("3_v65rg")
+metadata/_custom_type_script = "uid://cytafq8i1y8qm"
+
+[node name="ToMenu" type="Node" parent="Root/ChooseLevel"]
+script = ExtResource("4_jk2fa")
+to = NodePath("../../Menu")
+event = &"to_menu"
+delay_in_seconds = "0.0"
+metadata/_custom_type_script = "uid://cf1nsco3w0mf6"
+
+[node name="ToGame" type="Node" parent="Root/ChooseLevel"]
+script = ExtResource("4_jk2fa")
+to = NodePath("../../Game")
+event = &"to_game"
+delay_in_seconds = "0.0"
+metadata/_custom_type_script = "uid://cf1nsco3w0mf6"
+
+[node name="ToChooseCharacter" type="Node" parent="Root/ChooseLevel"]
+script = ExtResource("4_jk2fa")
+to = NodePath("../../ChooseCharacter")
+event = &"to_choose_character"
+delay_in_seconds = "0.0"
+metadata/_custom_type_script = "uid://cf1nsco3w0mf6"
+
+[node name="Game" type="Node" parent="Root"]
+script = ExtResource("3_v65rg")
+metadata/_custom_type_script = "uid://cytafq8i1y8qm"
+
+[node name="ToChooseLevel" type="Node" parent="Root/Game"]
+script = ExtResource("4_jk2fa")
+to = NodePath("../../ChooseLevel")
+event = &"to_choose_level"
+delay_in_seconds = "0.0"
+metadata/_custom_type_script = "uid://cf1nsco3w0mf6"
+
+[node name="ToGame" type="Node" parent="Root/Game"]
+script = ExtResource("4_jk2fa")
+to = NodePath("..")
+event = &"to_game"
+delay_in_seconds = "0.0"
+metadata/_custom_type_script = "uid://cf1nsco3w0mf6"

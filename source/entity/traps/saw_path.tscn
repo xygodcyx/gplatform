@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1uvxwyaowjeo"]
+
+[ext_resource type="Script" uid="uid://cmytkfhevnkgn" path="res://source/entity/traps/saw_path.gd" id="1_5x3gk"]
+
+[sub_resource type="Curve2D" id="Curve2D_5x3gk"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 296, 48, 0, 0, 0, 0, 424, 48, 0, 0, 0, 0, 424, 112, 0, 0, 0, 0, 296, 112, 0, 0, 0, 0, 296, 48)
+}
+point_count = 5
+
+[node name="SawPath" type="Path2D"]
+curve = SubResource("Curve2D_5x3gk")
+script = ExtResource("1_5x3gk")

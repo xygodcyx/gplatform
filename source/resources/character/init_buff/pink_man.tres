@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="CharacterBuff" load_steps=2 format=3 uid="uid://m8noj4mlnvgx"]
+
+[ext_resource type="Script" uid="uid://b533d25qfr2ek" path="res://source/resources/character/character_buff.gd" id="1_vldry"]
+
+[resource]
+script = ExtResource("1_vldry")
+add_max_jump_count = 1
+metadata/_custom_type_script = "uid://b533d25qfr2ek"

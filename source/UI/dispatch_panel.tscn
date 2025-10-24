@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfj0nu4ulw2yg"]
+
+[ext_resource type="Script" uid="uid://dy5y3nii28v7x" path="res://source/UI/dispatch_panel.gd" id="1_nc44e"]
+[ext_resource type="PackedScene" uid="uid://c1xoo0fv3t6at" path="res://source/UI/dispatch_item.tscn" id="2_xyprt"]
+
+[node name="DispatchPanel" type="MarginContainer"]
+z_index = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -144.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+mouse_behavior_recursive = 1
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+script = ExtResource("1_nc44e")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+alignment = 2
+
+[node name="DispatchItem" parent="VBoxContainer" instance=ExtResource("2_xyprt")]
+layout_mode = 2

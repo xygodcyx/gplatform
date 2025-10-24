@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://xwny3hl58hu2"]
+
+[ext_resource type="Script" uid="uid://djhs0ksdbgron" path="res://source/UI/playback_action.gd" id="1_n1mh4"]
+
+[node name="PlaybackActionLabel" type="Label"]
+offset_right = 32.0
+offset_bottom = 16.0
+text = "Left"
+script = ExtResource("1_n1mh4")

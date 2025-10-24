@@ -1,0 +1,398 @@
+[gd_scene load_steps=18 format=3 uid="uid://nuogtopqgwli"]
+
+[ext_resource type="Script" uid="uid://dbldbsvi8kdb2" path="res://source/scene/game_ui.gd" id="1_5kis0"]
+[ext_resource type="Texture2D" uid="uid://c13hvwrph7f77" path="res://assets/textures/ui/texture_button_icon_back.png" id="2_g65k8"]
+[ext_resource type="Texture2D" uid="uid://c6pyud61bnf7f" path="res://assets/textures/ui/texture_button_icon_restart.png" id="4_xg7ul"]
+[ext_resource type="Texture2D" uid="uid://dndqtn6gyc4nl" path="res://assets/textures/fa561.png" id="5_m17sh"]
+[ext_resource type="Texture2D" uid="uid://bedxfm86ebhrf" path="res://assets/textures/icon_heart.png" id="6_brgll"]
+[ext_resource type="Texture2D" uid="uid://citsfjx0ajkiq" path="res://assets/textures/shield.png" id="6_xg7ul"]
+[ext_resource type="Texture2D" uid="uid://5fcdk774yaka" path="res://assets/textures/icon_skull.png" id="7_1xmjc"]
+[ext_resource type="PackedScene" uid="uid://dltjksuf8a3" path="res://source/UI/game_pass/pass_panel.tscn" id="7_g65k8"]
+[ext_resource type="PackedScene" uid="uid://cfl8f2e2u400" path="res://source/UI/game_pass/more_panel.tscn" id="8_g65k8"]
+[ext_resource type="Shader" uid="uid://cm7to3c0emia" path="res://source/shader/pixel-font.gdshader" id="8_m17sh"]
+[ext_resource type="PackedScene" uid="uid://swyccadd7jm6" path="res://source/UI/replaying_key_panel.tscn" id="9_brgll"]
+[ext_resource type="Texture2D" uid="uid://b0x8wu71vm8wn" path="res://assets/textures/ui/select/UI_Flat_IconArrow01a.png" id="9_g65k8"]
+[ext_resource type="Shader" uid="uid://ds85q83fp5431" path="res://source/shader/tv_glitch_controller.gdshader" id="13_1xmjc"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_m17sh"]
+device = -1
+ctrl_pressed = true
+keycode = 82
+
+[sub_resource type="Shortcut" id="Shortcut_brgll"]
+events = [SubResource("InputEventKey_m17sh")]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_brgll"]
+shader = ExtResource("8_m17sh")
+shader_parameter/jitter_strength = 2.0
+shader_parameter/jitter_speed = 8.0
+shader_parameter/jitter_frequency = 12.0
+shader_parameter/separate_xy = true
+shader_parameter/time_offset = 0.0
+shader_parameter/enable_rotation = true
+shader_parameter/rotation_strength = 10.000000475
+shader_parameter/rotation_speed = 3.0
+shader_parameter/rotation_frequency = 4.0
+shader_parameter/enable_scaling = true
+shader_parameter/scale_strength = 0.1
+shader_parameter/scale_speed = 2.5
+shader_parameter/scale_frequency = 6.0
+shader_parameter/base_scale = 1.0
+shader_parameter/text_color = Color(0.10221863, 0.5835439, 0.90234375, 1)
+shader_parameter/use_custom_color = true
+shader_parameter/shake_intensity = 0.5
+shader_parameter/enable_pixelation = true
+shader_parameter/pixel_size = 1.0
+shader_parameter/adaptive_pixels = true
+shader_parameter/enable_outline = true
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/outline_thickness = 1.0
+shader_parameter/chromatic_aberration = false
+shader_parameter/aberration_strength = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_py7nn"]
+shader = ExtResource("13_1xmjc")
+shader_parameter/intensity = 0.6
+shader_parameter/time_scale = 1.0
+shader_parameter/scanline_density = 240.0
+shader_parameter/chroma_shift = -0.008
+
+[node name="GameUI" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5kis0")
+
+[node name="ActionButton" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -79.0
+offset_top = 16.0
+offset_right = -24.0
+offset_bottom = 32.0
+grow_horizontal = 0
+
+[node name="Restart" type="Button" parent="ActionButton"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -21.0
+offset_bottom = 22.0
+grow_horizontal = 0
+focus_neighbor_left = NodePath("../../PlayerInfo/BackChooseLevel")
+focus_neighbor_top = NodePath("../../GamePass/PassPanel/PassAction/Next")
+focus_neighbor_right = NodePath("../../GamePass/PassPanel/MarginContainer/HBoxContainer/MoreButton")
+focus_neighbor_bottom = NodePath("../../GamePass/PassPanel/MarginContainer/HBoxContainer/MoreButton")
+focus_next = NodePath("../../GamePass/PassPanel/MarginContainer/HBoxContainer/MoreButton")
+focus_previous = NodePath("../../PlayerInfo/BackChooseLevel")
+shortcut = SubResource("Shortcut_brgll")
+text = "Restart"
+icon = ExtResource("4_xg7ul")
+
+[node name="PlayerInfo" type="Control" parent="."]
+anchors_preset = 0
+focus_neighbor_left = NodePath("../GamePass/PassPanel/PassAction/Next")
+focus_neighbor_top = NodePath("../GamePass/PassPanel/PassAction/Next")
+focus_neighbor_right = NodePath("../GamePass/PassPanel/MarginContainer/HBoxContainer/MoreButton")
+focus_neighbor_bottom = NodePath("../GamePass/PassPanel/MarginContainer/HBoxContainer/MoreButton")
+focus_next = NodePath("../GamePass/PassPanel/MarginContainer/HBoxContainer/MoreButton")
+focus_previous = NodePath("../GamePass/PassPanel/PassAction/Next")
+
+[node name="BackChooseLevel" type="Button" parent="PlayerInfo"]
+layout_mode = 1
+offset_left = 10.0
+offset_top = 12.0
+offset_right = 197.0
+offset_bottom = 36.0
+focus_neighbor_left = NodePath("../../GamePass/PassPanel/PassAction/Next")
+focus_neighbor_top = NodePath("../../GamePass/PassPanel/PassAction/Next")
+focus_neighbor_right = NodePath("../../ActionButton/Restart")
+focus_neighbor_bottom = NodePath("../../GamePass/PassPanel/MarginContainer/HBoxContainer/MoreButton")
+focus_next = NodePath("../../ActionButton/Restart")
+focus_previous = NodePath("../../GamePass/PassPanel/PassAction/Next")
+text = "Back to Level Select"
+icon = ExtResource("2_g65k8")
+alignment = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerInfo"]
+layout_mode = 1
+offset_left = 10.0
+offset_top = 47.0
+offset_right = 88.0
+offset_bottom = 125.0
+theme_override_constants/separation = 4
+
+[node name="CollectedCount" type="HBoxContainer" parent="PlayerInfo/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+theme_override_constants/separation = 3
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="PlayerInfo/VBoxContainer/CollectedCount"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+texture = ExtResource("5_m17sh")
+
+[node name="CollectedCountLabel" type="Label" parent="PlayerInfo/VBoxContainer/CollectedCount"]
+layout_mode = 2
+text = "x 0"
+
+[node name="NeedCollectedFruitCountLabel" type="Label" parent="PlayerInfo/VBoxContainer/CollectedCount"]
+layout_mode = 2
+text = " / 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Hp" type="HBoxContainer" parent="PlayerInfo/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+theme_override_constants/separation = 3
+
+[node name="TextureRect" type="TextureRect" parent="PlayerInfo/VBoxContainer/Hp"]
+clip_contents = true
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+texture = ExtResource("6_brgll")
+
+[node name="HpLabel" type="Label" parent="PlayerInfo/VBoxContainer/Hp"]
+layout_mode = 2
+text = "x 0"
+
+[node name="MaxHpLabel" type="Label" parent="PlayerInfo/VBoxContainer/Hp"]
+layout_mode = 2
+text = " / 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Shield" type="HBoxContainer" parent="PlayerInfo/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+theme_override_constants/separation = 3
+
+[node name="TextureRect" type="TextureRect" parent="PlayerInfo/VBoxContainer/Shield"]
+self_modulate = Color(1, 0.80078125, 0.80078125, 1)
+clip_contents = true
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+texture = ExtResource("6_xg7ul")
+expand_mode = 3
+
+[node name="ShieldLabel" type="Label" parent="PlayerInfo/VBoxContainer/Shield"]
+layout_mode = 2
+text = "x 0"
+
+[node name="MaxShieldLabel" type="Label" parent="PlayerInfo/VBoxContainer/Shield"]
+layout_mode = 2
+text = " / 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Deaden" type="HBoxContainer" parent="PlayerInfo/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+theme_override_constants/separation = 3
+
+[node name="TextureRect" type="TextureRect" parent="PlayerInfo/VBoxContainer/Deaden"]
+self_modulate = Color(1, 0.80078125, 0.80078125, 1)
+clip_contents = true
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+texture = ExtResource("7_1xmjc")
+
+[node name="DeadenLabel" type="Label" parent="PlayerInfo/VBoxContainer/Deaden"]
+layout_mode = 2
+text = "x 0"
+
+[node name="TopInfo" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+
+[node name="TimeLabel" type="Label" parent="TopInfo"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = 30.0
+offset_right = 20.0
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "00:00"
+
+[node name="ReplayingLabel" type="Label" parent="TopInfo"]
+visible = false
+self_modulate = Color(0.97265625, 0.45213318, 0.45213318, 1)
+material = SubResource("ShaderMaterial_brgll")
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -75.0
+offset_top = 50.0
+offset_right = 117.0
+offset_bottom = 82.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "Replaying..."
+
+[node name="BottomInfo" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ReplayingKeyPanel" parent="BottomInfo" instance=ExtResource("9_brgll")]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -48.0
+offset_right = 150.0
+offset_bottom = -23.0
+grow_vertical = 0
+
+[node name="GamePass" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PassPanel" parent="GamePass" instance=ExtResource("7_g65k8")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -151.5
+offset_top = -99.0
+offset_right = 151.5
+offset_bottom = 99.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MorePanel" parent="GamePass" instance=ExtResource("8_g65k8")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -148.5
+offset_top = -99.0
+offset_right = 148.5
+offset_bottom = 99.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GamePad" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -56.0
+offset_bottom = -56.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GamePad"]
+layout_mode = 0
+offset_left = 116.0
+offset_top = -59.0
+offset_right = 256.0
+offset_bottom = -19.0
+theme_override_constants/separation = 20
+
+[node name="Left" type="TouchScreenButton" parent="GamePad/HBoxContainer"]
+self_modulate = Color(1, 1, 1, 0.39215687)
+position = Vector2(-1, -1)
+scale = Vector2(-4.3964753, 4.2764754)
+texture_normal = ExtResource("9_g65k8")
+passby_press = true
+action = "ui_left"
+
+[node name="Right" type="TouchScreenButton" parent="GamePad/HBoxContainer"]
+self_modulate = Color(1, 1, 1, 0.39215687)
+position = Vector2(0, -1)
+scale = Vector2(4.3964753, 4.2764754)
+texture_normal = ExtResource("9_g65k8")
+passby_press = true
+action = "ui_right"
+
+[node name="Space" type="TouchScreenButton" parent="GamePad"]
+self_modulate = Color(1, 1, 1, 0.39215687)
+position = Vector2(487, -8)
+rotation = -1.5707964
+scale = Vector2(4.228062, 4.228062)
+texture_normal = ExtResource("9_g65k8")
+action = "ui_accept"
+
+[node name="Down" type="TouchScreenButton" parent="GamePad"]
+self_modulate = Color(1, 1, 1, 0.39215687)
+position = Vector2(526, 3)
+rotation = 1.5707964
+scale = Vector2(2.3600001, 2.3600001)
+texture_normal = ExtResource("9_g65k8")
+passby_press = true
+action = "ui_down"
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="GlobalEffect" type="ColorRect" parent="."]
+visible = false
+z_index = 999
+material = SubResource("ShaderMaterial_py7nn")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[connection signal="pressed" from="ActionButton/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="PlayerInfo/BackChooseLevel" to="." method="_on_back_choose_level_pressed"]

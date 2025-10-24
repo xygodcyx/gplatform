@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://lh8wvrosyexu"]
+
+[ext_resource type="PackedScene" uid="uid://dfw7tpcupxmeq" path="res://source/entity/character/player.tscn" id="1_sc2ag"]
+[ext_resource type="AnimationLibrary" uid="uid://d2xtwkoev3qif" path="res://assets/animations/animation_mask_dude.tres" id="2_1jqc8"]
+
+[node name="Player" instance=ExtResource("1_sc2ag")]
+
+[node name="AnimationPlayer" parent="." index="4"]
+libraries = {
+&"": ExtResource("2_1jqc8")
+}
+
+[node name="AnimationTree" parent="." index="5"]
+parameters/Move/blend_position = -0.032705665

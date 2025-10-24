@@ -1,0 +1,75 @@
+[gd_scene load_steps=6 format=3 uid="uid://cjacke61su4k1"]
+
+[ext_resource type="PackedScene" uid="uid://bt3mlbvodn5pc" path="res://source/scene/base_level.tscn" id="1_44a32"]
+[ext_resource type="PackedScene" uid="uid://dloegopkgxap1" path="res://source/entity/collectible/fruit.tscn" id="2_igdwh"]
+[ext_resource type="PackedScene" uid="uid://cd5lwi7v5wcko" path="res://source/entity/platform/falling_platform.tscn" id="3_cstx7"]
+[ext_resource type="PackedScene" uid="uid://bqlp0eae733ku" path="res://source/entity/traps/spike.tscn" id="4_m1ag0"]
+[ext_resource type="PackedScene" uid="uid://c0wy7v7wfmepc" path="res://source/entity/flag.tscn" id="5_xctkt"]
+
+[node name="Level" instance=ExtResource("1_44a32")]
+level_index = 0
+
+[node name="Fruit" parent="Fruits" index="0" instance=ExtResource("2_igdwh")]
+position = Vector2(187, 126)
+
+[node name="Fruit2" parent="Fruits" index="1" instance=ExtResource("2_igdwh")]
+position = Vector2(214, 127)
+
+[node name="Fruit3" parent="Fruits" index="2" instance=ExtResource("2_igdwh")]
+position = Vector2(241, 126)
+
+[node name="Fruit4" parent="Fruits" index="3" instance=ExtResource("2_igdwh")]
+position = Vector2(270, 126)
+
+[node name="Fruit5" parent="Fruits" index="4" instance=ExtResource("2_igdwh")]
+position = Vector2(329, 126)
+
+[node name="Fruit6" parent="Fruits" index="5" instance=ExtResource("2_igdwh")]
+position = Vector2(356, 127)
+
+[node name="Fruit7" parent="Fruits" index="6" instance=ExtResource("2_igdwh")]
+position = Vector2(383, 126)
+
+[node name="Fruit8" parent="Fruits" index="7" instance=ExtResource("2_igdwh")]
+position = Vector2(412, 126)
+
+[node name="FallingPlatform" parent="FallingPlatforms" index="0" instance=ExtResource("3_cstx7")]
+position = Vector2(229, 162)
+
+[node name="FallingPlatform2" parent="FallingPlatforms" index="1" instance=ExtResource("3_cstx7")]
+position = Vector2(368, 163)
+
+[node name="Spikes" type="Node2D" parent="." index="7"]
+position = Vector2(33, 16)
+
+[node name="Spike" parent="Spikes" index="0" instance=ExtResource("4_m1ag0")]
+position = Vector2(232, 263)
+
+[node name="Spike2" parent="Spikes" index="1" instance=ExtResource("4_m1ag0")]
+position = Vector2(248, 263)
+
+[node name="Spike3" parent="Spikes" index="2" instance=ExtResource("4_m1ag0")]
+position = Vector2(264, 263)
+
+[node name="Spike4" parent="Spikes" index="3" instance=ExtResource("4_m1ag0")]
+position = Vector2(280, 263)
+
+[node name="Spike5" parent="Spikes" index="4" instance=ExtResource("4_m1ag0")]
+position = Vector2(296, 263)
+
+[node name="Spike6" parent="Spikes" index="5" instance=ExtResource("4_m1ag0")]
+position = Vector2(312, 263)
+
+[node name="Spike7" parent="Spikes" index="6" instance=ExtResource("4_m1ag0")]
+position = Vector2(328, 263)
+
+[node name="Spike8" parent="Spikes" index="7" instance=ExtResource("4_m1ag0")]
+position = Vector2(344, 263)
+
+[node name="Spike9" parent="Spikes" index="8" instance=ExtResource("4_m1ag0")]
+position = Vector2(360, 263)
+
+[node name="Flag" parent="Flags" index="0" instance=ExtResource("5_xctkt")]
+position = Vector2(415, 239)
+
+[editable path="Spawn"]

@@ -1,0 +1,155 @@
+[gd_scene load_steps=6 format=3 uid="uid://dltjksuf8a3"]
+
+[ext_resource type="Script" uid="uid://c0iymga0u4hhs" path="res://source/UI/game_pass/pass_panel.gd" id="1_2n661"]
+[ext_resource type="Texture2D" uid="uid://dye3im5oydaqf" path="res://assets/textures/ui/texture_button_icon_leaderboard.png" id="1_ao4a0"]
+[ext_resource type="Texture2D" uid="uid://dp15hshcbpat" path="res://assets/textures/main_characters/Pink Man/Jump (32x32).png" id="2_2n661"]
+[ext_resource type="Texture2D" uid="uid://pivkhmyarpgb" path="res://assets/textures/ui/texture_button_icon_previous.png" id="3_g2gdn"]
+[ext_resource type="Texture2D" uid="uid://b6bxq8yvxs6xo" path="res://assets/textures/ui/texture_button_icon_next.png" id="4_8vrva"]
+
+[node name="PassPanel" type="HBoxContainer"]
+offset_right = 303.0
+offset_bottom = 198.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_2n661")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PassLeftInfo" type="Panel" parent="HBoxContainer"]
+custom_minimum_size = Vector2(234, 198)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/PassLeftInfo"]
+layout_mode = 0
+offset_left = 22.5
+offset_top = 7.0
+offset_right = 225.0
+offset_bottom = 37.0
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/PassLeftInfo/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 28
+
+[node name="Title" type="Label" parent="HBoxContainer/PassLeftInfo/MarginContainer/HBoxContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Congratulate!"
+horizontal_alignment = 1
+
+[node name="PassInfo" type="VBoxContainer" parent="HBoxContainer/PassLeftInfo"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -93.0
+offset_top = -54.0
+offset_right = 93.0
+offset_bottom = 54.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+
+[node name="Character" type="HBoxContainer" parent="HBoxContainer/PassLeftInfo/PassInfo"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/PassLeftInfo/PassInfo/Character"]
+layout_mode = 2
+text = "Use Character"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/PassLeftInfo/PassInfo/Character"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Control" type="Control" parent="HBoxContainer/PassLeftInfo/PassInfo/Character/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CharacterPortrait" type="TextureRect" parent="HBoxContainer/PassLeftInfo/PassInfo/Character/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_2n661")
+
+[node name="PassTime" type="HBoxContainer" parent="HBoxContainer/PassLeftInfo/PassInfo"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/PassLeftInfo/PassInfo/PassTime"]
+layout_mode = 2
+text = "Clear Time"
+
+[node name="PassTimeLabel" type="Label" parent="HBoxContainer/PassLeftInfo/PassInfo/PassTime"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "00:00"
+horizontal_alignment = 2
+
+[node name="DeadenCount" type="HBoxContainer" parent="HBoxContainer/PassLeftInfo/PassInfo"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/PassLeftInfo/PassInfo/DeadenCount"]
+layout_mode = 2
+text = "Deaden Count"
+
+[node name="DeadenCountLabel" type="Label" parent="HBoxContainer/PassLeftInfo/PassInfo/DeadenCount"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+horizontal_alignment = 2
+
+[node name="PassAction" type="HBoxContainer" parent="HBoxContainer/PassLeftInfo"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -67.0
+offset_top = -40.0
+offset_right = 67.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Prev" type="Button" parent="HBoxContainer/PassLeftInfo/PassAction"]
+layout_mode = 2
+focus_neighbor_right = NodePath("../Next")
+focus_neighbor_bottom = NodePath("../Next")
+focus_next = NodePath("../Next")
+text = "Prev"
+icon = ExtResource("3_g2gdn")
+
+[node name="Next" type="Button" parent="HBoxContainer/PassLeftInfo/PassAction"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Prev")
+focus_previous = NodePath("../Prev")
+text = "Next"
+icon = ExtResource("4_8vrva")
+
+[node name="PassRightAction" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="MoreButton" type="Button" parent="HBoxContainer/PassRightAction"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+focus_neighbor_left = NodePath("../../PassLeftInfo/PassAction/Next")
+focus_neighbor_top = NodePath("../../PassLeftInfo/PassAction/Prev")
+focus_neighbor_right = NodePath("../../PassLeftInfo/PassAction/Next")
+focus_neighbor_bottom = NodePath("../../PassLeftInfo/PassAction/Next")
+focus_next = NodePath("../../PassLeftInfo/PassAction/Next")
+focus_previous = NodePath("../../PassLeftInfo/PassAction/Prev")
+theme_override_font_sizes/font_size = 16
+text = "More"
+icon = ExtResource("1_ao4a0")
+
+[connection signal="pressed" from="HBoxContainer/PassLeftInfo/PassAction/Prev" to="." method="_on_prev_pressed"]
+[connection signal="pressed" from="HBoxContainer/PassLeftInfo/PassAction/Next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="HBoxContainer/PassRightAction/MoreButton" to="." method="_on_more_button_pressed"]

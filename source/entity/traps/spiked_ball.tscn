@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://bhp1ekg88qtx"]
+
+[ext_resource type="Texture2D" uid="uid://j5gjj3rgfdd5" path="res://assets/textures/traps/Spiked Ball/Spiked Ball.png" id="1_gatua"]
+[ext_resource type="Script" uid="uid://r6i7rf1eiocy" path="res://source/entity/traps/spiked_ball.gd" id="1_ud0fs"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gatua"]
+radius = 9.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ud0fs"]
+radius = 11.0
+
+[node name="SpikedBall" type="Node2D"]
+script = ExtResource("1_ud0fs")
+swing_angle = 90.0
+
+[node name="Ball" type="CharacterBody2D" parent="."]
+z_index = 2
+position = Vector2(-51.925316, 15.548661)
+
+[node name="Sprite2D" type="Sprite2D" parent="Ball"]
+texture = ExtResource("1_gatua")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
+position = Vector2(1, 0)
+shape = SubResource("CircleShape2D_gatua")
+
+[node name="Area2D" type="Area2D" parent="Ball"]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball/Area2D"]
+shape = SubResource("CircleShape2D_ud0fs")
+debug_color = Color(0.9765625, 0.4005432, 0.6300509, 0.41960785)
+
+[connection signal="body_entered" from="Ball/Area2D" to="." method="_on_area_2d_body_entered"]

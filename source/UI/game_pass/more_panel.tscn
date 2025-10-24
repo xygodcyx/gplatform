@@ -1,0 +1,106 @@
+[gd_scene load_steps=5 format=3 uid="uid://cfl8f2e2u400"]
+
+[ext_resource type="PackedScene" uid="uid://bvyv4bb0m60vu" path="res://source/UI/table_head.tscn" id="1_eol64"]
+[ext_resource type="Script" uid="uid://byf56oys3bgan" path="res://source/UI/game_pass/more_panel.gd" id="1_s44cg"]
+[ext_resource type="Texture2D" uid="uid://c13hvwrph7f77" path="res://assets/textures/ui/texture_button_icon_back.png" id="2_s44cg"]
+[ext_resource type="PackedScene" uid="uid://5rj5fygepvfn" path="res://source/UI/table_row.tscn" id="3_lkno6"]
+
+[node name="MorePanel" type="HBoxContainer"]
+offset_right = 349.0
+offset_bottom = 198.0
+script = ExtResource("1_s44cg")
+
+[node name="PanelLeftInfo" type="Panel" parent="."]
+custom_minimum_size = Vector2(290, 198)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelLeftInfo"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelLeftInfo/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Control" type="Control" parent="PanelLeftInfo/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="LevelIndexContainer" type="VBoxContainer" parent="PanelLeftInfo/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 6
+alignment = 1
+
+[node name="Order" type="Label" parent="PanelLeftInfo/MarginContainer/HBoxContainer/LevelIndexContainer"]
+self_modulate = Color(0.98046875, 0.50172424, 0.50172424, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "第"
+horizontal_alignment = 1
+
+[node name="LevelIndexLabel" type="Label" parent="PanelLeftInfo/MarginContainer/HBoxContainer/LevelIndexContainer"]
+self_modulate = Color(0.98046875, 0.50172424, 0.50172424, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "1"
+horizontal_alignment = 1
+
+[node name="Level" type="Label" parent="PanelLeftInfo/MarginContainer/HBoxContainer/LevelIndexContainer"]
+self_modulate = Color(0.98046875, 0.50172424, 0.50172424, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "关"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelLeftInfo/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TableHead" parent="PanelLeftInfo/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("1_eol64")]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelLeftInfo/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+follow_focus = true
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="PlayerLevelDataContainer" type="VBoxContainer" parent="PanelLeftInfo/MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlayerLevelDataContentContainer" type="VBoxContainer" parent="PanelLeftInfo/MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/PlayerLevelDataContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="TableRow" parent="PanelLeftInfo/MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/PlayerLevelDataContainer/PlayerLevelDataContentContainer" instance=ExtResource("3_lkno6")]
+layout_mode = 2
+
+[node name="PanelRightAction" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="PanelRightAction"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../PlayerInfo/BackChooseLevel")
+focus_neighbor_top = NodePath("../../../PlayerInfo/BackChooseLevel")
+focus_neighbor_right = NodePath("../../../ActionButton/Restart")
+focus_neighbor_bottom = NodePath("../../../ActionButton/Restart")
+focus_next = NodePath("../../../ActionButton/Restart")
+focus_previous = NodePath("../../../PlayerInfo/BackChooseLevel")
+theme_override_font_sizes/font_size = 16
+text = "Back"
+icon = ExtResource("2_s44cg")
+
+[connection signal="pressed" from="PanelRightAction/BackButton" to="." method="_on_back_button_pressed"]

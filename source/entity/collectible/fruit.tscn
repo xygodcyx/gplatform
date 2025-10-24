@@ -1,0 +1,182 @@
+[gd_scene load_steps=17 format=3 uid="uid://dloegopkgxap1"]
+
+[ext_resource type="Script" uid="uid://bbi0pn5d8k2g1" path="res://source/entity/collectible/fruit.gd" id="1_jxes4"]
+[ext_resource type="Texture2D" uid="uid://dbm5ab22gk35i" path="res://assets/textures/items/texture_items_fruits_apple.png" id="1_nf0no"]
+[ext_resource type="Shader" uid="uid://sdqqpv1aof7a" path="res://source/shader/outline.gdshader" id="2_11vev"]
+[ext_resource type="Texture2D" uid="uid://ubkq3vl0nv80" path="res://assets/textures/items/texture_items_fruits_collected.png" id="3_jh4us"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g1vmp"]
+shader = ExtResource("2_11vev")
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/outline_width = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nf0no"]
+radius = 8.062258
+
+[sub_resource type="Animation" id="Animation_jh4us"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [17]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:vframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_jxes4"]
+resource_name = "idle"
+length = 0.9411824
+loop_mode = 1
+step = 0.0625
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.05882353, 0, 0.05882353, 0.11764706, 0.1764706, 0.23529412, 0.29411766, 0.3529412, 0.4117647, 0.47058824, 0.5294118, 0.5882353, 0.64705884, 0.7058824, 0.7647059, 0.8235294, 0.88235295),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(-0.05882353),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [17]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(-0.05882353),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jh4us"]
+_data = {
+&"RESET": SubResource("Animation_jh4us"),
+&"idle": SubResource("Animation_jxes4")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11vev"]
+atlas = ExtResource("3_jh4us")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1vmp"]
+atlas = ExtResource("3_jh4us")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qplfu"]
+atlas = ExtResource("3_jh4us")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6a22"]
+atlas = ExtResource("3_jh4us")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fnbj6"]
+atlas = ExtResource("3_jh4us")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cy3wq"]
+atlas = ExtResource("3_jh4us")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jxes4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11vev")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g1vmp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qplfu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t6a22")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fnbj6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cy3wq")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 12.0
+}]
+
+[node name="Fruit" type="Node2D"]
+script = ExtResource("1_jxes4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_g1vmp")
+texture = ExtResource("1_nf0no")
+hframes = 17
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_nf0no")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_jh4us")
+}
+autoplay = "idle"
+
+[node name="Flash" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_jxes4")
+animation = &"idle"
+frame = 5
+frame_progress = 1.0
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

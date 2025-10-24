@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://bqlp0eae733ku"]
+
+[ext_resource type="Script" uid="uid://cagnnnokouhta" path="res://source/entity/traps/spike.gd" id="1_slkp2"]
+[ext_resource type="Shader" uid="uid://sdqqpv1aof7a" path="res://source/shader/outline.gdshader" id="2_6evj8"]
+[ext_resource type="Texture2D" uid="uid://crffgrfq0f5ir" path="res://assets/textures/traps/Spikes/Idle.png" id="2_8f7kg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hf473"]
+shader = ExtResource("2_6evj8")
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/outline_width = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_icaeg"]
+size = Vector2(15, 7)
+
+[node name="Spike" type="Node2D"]
+script = ExtResource("1_slkp2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_hf473")
+texture = ExtResource("2_8f7kg")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, 4.5)
+shape = SubResource("RectangleShape2D_icaeg")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,0 +1,102 @@
+[gd_scene load_steps=13 format=3 uid="uid://qhl7f78xvt3o"]
+
+[ext_resource type="Theme" uid="uid://b555fah1dgh2b" path="res://source/resources/theme & stylebox/ui.tres" id="2_70hst"]
+[ext_resource type="Texture2D" uid="uid://gbbldpm7biaa" path="res://assets/textures/ui/texture_icon_01.png" id="2_pqn0x"]
+[ext_resource type="Script" uid="uid://c2y648ucgil5d" path="res://source/UI/sub_view_port_display.gd" id="2_vghtd"]
+[ext_resource type="PackedScene" uid="uid://cjacke61su4k1" path="res://source/scene/levels/level1.tscn" id="3_wqww5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wqww5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nrjrh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pdyu2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3u70f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ivtmi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lwsp8"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_wqww5"]
+action = &"ui_accept"
+
+[sub_resource type="Shortcut" id="Shortcut_nrjrh"]
+events = [SubResource("InputEventAction_wqww5")]
+
+[node name="SubViewportDisplayControl" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -180.0
+offset_right = 26.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_vghtd")
+
+[node name="GoLevelButton" type="Button" parent="."]
+custom_minimum_size = Vector2(346, 194)
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_wqww5")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_nrjrh")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_pdyu2")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_3u70f")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ivtmi")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lwsp8")
+shortcut = SubResource("Shortcut_nrjrh")
+
+[node name="SubViewportDisplay" type="SubViewportContainer" parent="GoLevelButton"]
+layout_mode = 1
+offset_right = 346.0
+offset_bottom = 194.0
+mouse_filter = 2
+theme = ExtResource("2_70hst")
+
+[node name="Render" type="SubViewport" parent="GoLevelButton/SubViewportDisplay"]
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+gui_disable_input = true
+oversampling = false
+size = Vector2i(346, 194)
+size_2d_override = Vector2i(576, 324)
+size_2d_override_stretch = true
+render_target_update_mode = 4
+
+[node name="Level" parent="GoLevelButton/SubViewportDisplay/Render" instance=ExtResource("3_wqww5")]
+script = null
+
+[node name="LevelIndex" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = 26.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="LevelIndex"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -21.0
+offset_top = -21.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(2, 2)
+mouse_filter = 2
+texture = ExtResource("2_pqn0x")
+
+[connection signal="pressed" from="GoLevelButton" to="." method="_on_go_level_button_pressed"]

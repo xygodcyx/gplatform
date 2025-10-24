@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyncjk2ppg78c"]
+
+[ext_resource type="Script" uid="uid://6m58n0r36rsd" path="res://source/UI/buff_item.gd" id="1_t8ewe"]
+
+[node name="BuffItem" type="HBoxContainer"]
+script = ExtResource("1_t8ewe")

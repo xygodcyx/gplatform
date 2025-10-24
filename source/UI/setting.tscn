@@ -1,0 +1,125 @@
+[gd_scene load_steps=4 format=3 uid="uid://djxf2pmu0k0c0"]
+
+[ext_resource type="Script" uid="uid://j2o7d34gsxlu" path="res://source/UI/setting.gd" id="1_3wgvm"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_38fn8"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_3wgvm"]
+events = [SubResource("InputEventKey_38fn8")]
+
+[node name="Setting" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3wgvm")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Close" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -29.0
+offset_top = 8.0
+offset_right = -7.0
+offset_bottom = 30.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 16
+shortcut = SubResource("Shortcut_3wgvm")
+text = "X"
+
+[node name="NormalSettingContainer" type="VBoxContainer" parent="Panel"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -195.0
+offset_top = -69.0
+offset_right = 208.40253
+offset_bottom = -29.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="VolumeChange" type="HBoxContainer" parent="Panel/NormalSettingContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/NormalSettingContainer/VolumeChange"]
+layout_mode = 2
+text = "Volume"
+
+[node name="Control" type="Control" parent="Panel/NormalSettingContainer/VolumeChange"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="VolumeSlider" type="HSlider" parent="Panel/NormalSettingContainer/VolumeChange"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Control2" type="Control" parent="Panel/NormalSettingContainer/VolumeChange"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="VolumeLabel" type="Label" parent="Panel/NormalSettingContainer/VolumeChange"]
+layout_mode = 2
+text = "100"
+
+[node name="LanguageChange" type="HBoxContainer" parent="Panel/NormalSettingContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/NormalSettingContainer/LanguageChange"]
+layout_mode = 2
+text = "Language"
+
+[node name="Control" type="Control" parent="Panel/NormalSettingContainer/LanguageChange"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="OptionButton" type="OptionButton" parent="Panel/NormalSettingContainer/LanguageChange"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -94.0
+offset_top = -81.0
+offset_right = 94.0
+offset_bottom = -41.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 57
+
+[node name="Save" type="Button" parent="Panel/HBoxContainer"]
+layout_mode = 2
+text = "Save"
+
+[node name="SaveAndExit" type="Button" parent="Panel/HBoxContainer"]
+layout_mode = 2
+text = "Save And Exit"
+
+[connection signal="pressed" from="Panel/Close" to="." method="_on_close_pressed"]
+[connection signal="drag_ended" from="Panel/NormalSettingContainer/VolumeChange/VolumeSlider" to="." method="_on_volume_slider_drag_ended"]
+[connection signal="value_changed" from="Panel/NormalSettingContainer/VolumeChange/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
+[connection signal="item_selected" from="Panel/NormalSettingContainer/LanguageChange/OptionButton" to="." method="_on_option_button_item_selected"]
+[connection signal="pressed" from="Panel/HBoxContainer/Save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/SaveAndExit" to="." method="_on_save_and_exit_pressed"]
