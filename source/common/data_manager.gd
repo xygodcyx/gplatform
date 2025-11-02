@@ -5,7 +5,6 @@ func _ready() -> void:
 	init_player_playback_data()
 	load_all_user_data()
 	reset_player_playback_trigger_flag()
-
 	SignalManager.go_level.connect(
 		func(_level_index):
 			init_player_buff()
@@ -178,8 +177,8 @@ func append_new_playback_data():
 var level_time: float = 0.0
 var delta_time: float = 0.0
 
-
 func _process(delta: float) -> void:
+
 	if is_in_game && !get_tree().paused:
 		game_frame += 1
 
@@ -206,6 +205,7 @@ func append_playback(action: String, pressed: bool = true):
 
 func replaying_playback():
 	if !is_replaying: return
+	
 	var level_playback_index = find_level_playback_index(cur_replaying_level_data_id)
 	if level_playback_index == -1: return
 	var level_playback = player_playback_data[LevelManager.will_start_game_index][level_playback_index]
@@ -236,7 +236,7 @@ func replaying_playback():
 			if item.pressed:
 				SignalManager.down.emit()
 		
-
+	
 func find_level_playback_index(id: int):
 	var i = 0
 	for item in player_playback_data[LevelManager.will_start_game_index]:

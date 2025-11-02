@@ -36,7 +36,6 @@ func _ready():
 		func():
 			var finish_item = refresh_all_achievement_is_finish()
 			if !finish_item: 
-				print(DataManager.achieve_collected_count)
 				return
 			SignalManager.dispatch_info.emit(finish_item.name, "Finish")
 			DataManager.save_achievement_data()
@@ -53,7 +52,6 @@ func init_achievement_is_finish():
 		item.is_finish = DataManager.player_achievement_is_finish_data.get_or_add(item.name, false)
 
 func refresh_all_achievement_is_finish() -> Achievement:
-	# 返回新完成的成就
 	for achieve_item: Achievement in all_achievement_data:
 		var condition: Array[AchievementCondition] = achieve_item.condition
 
