@@ -305,7 +305,7 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_4xhno")
 anim_player = NodePath("../AnimationPlayer")
-parameters/Move/blend_position = 0.0009406805
+parameters/Move/blend_position = -0.73666096
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 visible = false
