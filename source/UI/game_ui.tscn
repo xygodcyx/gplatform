@@ -326,7 +326,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="GamePad" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0

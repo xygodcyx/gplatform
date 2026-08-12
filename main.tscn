@@ -15,7 +15,6 @@ unique_name_in_owner = true
 layer = 128
 
 [node name="DispatchPanel" parent="UILayer" instance=ExtResource("2_7mycd")]
-mouse_filter = 2
 
 [node name="StateChart" type="Node" parent="."]
 process_mode = 3
